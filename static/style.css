@@ -79,6 +79,14 @@
     background-color: #51c5cf;
 }
 
+h3 {
+    z-index: 4;
+}
+
 .button-row {
     height: 80px;
+}
+
+.slider-row {
+    height: 350px;
 }

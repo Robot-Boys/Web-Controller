@@ -20,29 +20,6 @@ function toPosition(motor, position) {
         console.log('position put failed', error);
     });
 }
-/*
-var headSlider = document.getElementById("headSlider");
-var headOutput = document.getElementById("headSliderValue");
-headOutput.innerHTML = headSlider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-headSlider.onmouseup = function () {
-    headOutput.innerHTML = this.value;
-    console.log('Bead value', this.value);
-    toPosition('head', this.value)
-}
-
-var bodySlider = document.getElementById("bodySlider");
-var bodyOutput = document.getElementById("bodySliderValue");
-bodyOutput.innerHTML = headSlider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-bodySlider.onmouseup = function () {
-    bodyOutput.innerHTML = this.value;
-    console.log('Body value', this.value);
-    toPosition('body', this.value)
-}
-*/
 
 $("#up-down-slider").roundSlider({
     min: -70,
@@ -60,7 +37,7 @@ $("#up-down-slider").roundSlider({
     },
     change: function (args) {
         console.log('change', args.value)
-        toPosition('body', args.value)
+        toPosition('up_down', args.value)
     }
 });
 
@@ -80,7 +57,7 @@ $("#left-right-slider").roundSlider({
     },
     change: function (args) {
         console.log('change', args.value)
-        toPosition('body', args.value)
+        toPosition('left_right', args.value)
     }
 });
 
@@ -88,7 +65,7 @@ $("#rotation-slider").roundSlider({
     min: -70,
     max: 70,
     sliderType: "min-range",
-    circleShape: "full",
+    circleShape: "half-top",
     value: 0,
     startAngle: 0,
     endAngle: 360,
@@ -100,8 +77,8 @@ $("#rotation-slider").roundSlider({
         return args.value;
     },
     change: function (args) {
-        console.log('change', args.value)
-        toPosition('body', args.value)
+        console.log('rotation', args.value)
+        toPosition('rotation', args.value)
     }
 });
 
@@ -109,7 +86,7 @@ $("#knee-slider").roundSlider({
     min: -70,
     max: 70,
     sliderType: "min-range",
-    circleShape: "full",
+    circleShape: "half-right",
     value: 0,
     startAngle: 0,
     endAngle: 360,
@@ -122,7 +99,7 @@ $("#knee-slider").roundSlider({
     },
     change: function (args) {
         console.log('change', args.value)
-        toPosition('body', args.value)
+        toPosition('knee', args.value)
     }
 });
 
@@ -143,6 +120,6 @@ $("#ground-slider").roundSlider({
     },
     change: function (args) {
         console.log('change', args.value)
-        toPosition('body', args.value)
+        toPosition('ground', args.value)
     }
 });
