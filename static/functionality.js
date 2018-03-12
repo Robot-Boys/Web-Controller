@@ -1,12 +1,22 @@
 function changePose(pose) {
     console.log("a js pose:", pose);
     axios.put('/pose/' + pose)
-        .then(function (succes) {
+        .then(function (success) {
                 console.log("pose puted");
             }
         ).catch(function (error) {
         console.log('pose put failed', error);
     });
+}
+
+function testJoystickController() {
+    console.log("test joystick");
+    axios.put('/testJoystick')
+        .then(function (success) {
+            console.log("joystick test puted");
+        }).catch(function (error) {
+            console.log("joystick test failed", error);
+    })
 }
 
 function toPosition(motor, position) {
@@ -37,7 +47,7 @@ $("#up-down-slider").roundSlider({
     },
     change: function (args) {
         console.log('change', args.value)
-        toPosition('up_down', args.value)
+        toPosition('up_ down', args.value)
     }
 });
 
