@@ -1,8 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_cors import CORS, cross_origin
 import socket
 import pickle
 
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/testJoystick": {"origins": "http://localhost:5000"}})
+app.debug = True
 
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
@@ -25,14 +29,19 @@ def joystick():
         return render_template('joystick.html')
 
 @app.route("/testJoystick", methods=['PUT'])
+@cross_origin(origin='localhost',headers=['Content- Type'])
 def test_joystick():
     test_object = {
         'motor': "pitch",
         'action': 1
     }
-    string_object = pickle.dumps(test_object)
+    print('joystick data')
+    print(request.get_json())
+    data = request.get_json()
+    string_object = pickle.dumps(data)
     sock.sendto(string_object, (UDP_IP, UDP_PORT))
-    return '200'
+    response = '200'
+    return response
 
 
 @app.route("/pose/<a_pose>", methods=['PUT'])
