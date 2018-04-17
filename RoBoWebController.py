@@ -20,6 +20,11 @@ def control_panel():
         return render_template('controlPanel.html')
 
 
+@app.route("/joystick")
+def joystick():
+        return render_template('joystick.html')
+
+
 @app.route("/pose/<a_pose>", methods=['PUT'])
 def pose(a_pose):
     move_object = {

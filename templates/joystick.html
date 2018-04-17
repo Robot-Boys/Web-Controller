@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Robo Joystick</title>
+
+</head>
+<style>
+.wrapper {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-gap: 10px;
+grid-auto-rows: minmax(100px, auto);
+}
+.one {
+grid-column: 1 / 2;
+grid-row: 1;
+}
+.two {
+grid-column: 2 / 2;
+grid-row: 1;
+}
+.jpad {
+  height: 200px;
+  width: 200px;
+  border: thin solid black;
+  position: relative;
+}
+.right {
+  position: absolute;
+  right: 0px;
+}
+.left {
+  position: absolute;
+  left: 0px;
+}
+</style>
+<body>
+  <h1>RobotJoystick</h1>
+  <hr/>
+  <div class="wrapper">
+    <div class="one">
+      <div class="jpad left" id="leftJoystick"></div>
+    </div>
+    <div class="two">
+      <div class="jpad right" id="rightJoystick"></div>
+    </div>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/static/nipplejs.min.js"></script>
+  <script>
+    var leftStick, rightStick;
+    $(document).ready(function(){
+      leftStick = nipplejs.create({
+        zone: document.getElementById("leftJoystick"),
+        color: 'red'
+      });
+      rightStick = nipplejs.create({
+        zone: document.getElementById("rightJoystick"),
+        color: 'blue'
+      });
+    });
+  </script>
+</body>
+</html>
