@@ -24,6 +24,16 @@ def control_panel():
 def joystick():
         return render_template('joystick.html')
 
+@app.route("/testJoystick", methods=['PUT'])
+def test_joystick():
+    test_object = {
+        'motor': "pitch",
+        'action': 1
+    }
+    string_object = pickle.dumps(test_object)
+    sock.sendto(string_object, (UDP_IP, UDP_PORT))
+    return '200'
+
 
 @app.route("/pose/<a_pose>", methods=['PUT'])
 def pose(a_pose):
