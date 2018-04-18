@@ -75,35 +75,37 @@ grid-row: 1;
           console.log("DATA:", (d.angle.degree+180));
           var angle = d.angle.degree+180;
           var pitchCMD = {
-            motor: "PITCH"
+            motor: "PITCH",
+            action: 0
           };
           var yawCMD = {
-            motor: "YAW"
+            motor: "YAW",
+            action: 0
           }
           if(angle > 0 && angle < 35){
             console.log("RIGHT");
-            pitchCMD.action = 1;
-            yawCMD.action = 0;
+            pitchCMD.action = 0;
+            yawCMD.action = -1;
           } else if(angle > 35 && angle < 75){
             console.log("RIGHT/DOWN");
-            pitchCMD.action = 1;
+            pitchCMD.action = -1;
             yawCMD.action = -1;
           } else if(angle > 75 && angle < 105){
             console.log("DOWN");
-            pitchCMD.action = 0;
-            yawCMD.action = -1;
+            pitchCMD.action = -1;
+            yawCMD.action = 0;
           } else if(angle > 115 && angle < 145){
             console.log("DOWN/LEFT");
             pitchCMD.action = -1;
-            yawCMD.action = -1;
+            yawCMD.action = 1;
           } else if(angle > 145 && angle < 200){
             console.log("LEFT!");
             pitchCMD.action = 0;
-            yawCMD.action = -1;
+            yawCMD.action = 1;
           } else if(angle > 200 && angle < 250){
             console.log("UP/LEFT");
             pitchCMD.action = 1;
-            yawCMD.action = -1;
+            yawCMD.action = 1;
           } else if(angle > 250 && angle < 300){
             console.log("UP");
             pitchCMD.action = 1;
@@ -111,11 +113,11 @@ grid-row: 1;
           } else if(angle > 300 && angle < 325) {
             console.log("UP/RIGHT");
             pitchCMD.action = 1;
-            yawCMD.action = 1;
+            yawCMD.action = -1;
           } else if(angle > 325 && angle <= 360){
             console.log("RIGHT");
             pitchCMD.action = 0;
-            yawCMD.action = 1;
+            yawCMD.action = -1;
           }
 
           // send out the motor command
