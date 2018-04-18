@@ -51,7 +51,7 @@ grid-row: 1;
   <script>
     var leftStick, rightStick;
     // setup endpoint here
-    var endpoint = "http://localhost:5000/testJoystick";
+    var endpoint = "/testJoystick";
 
     $(document).ready(function(){
       leftStick = nipplejs.create({
@@ -130,7 +130,12 @@ grid-row: 1;
             console.log("PITCH cmd response", res);
           });
 
-        });
+        }).on("end", function() {
+          axios.put(endpoint, {motor: "YAW", action:0}).then(function(res) {
+          });
+          axios.put(endpoint, {motor: "STOP", action:0}).then(function(res) {
+          });
+        });;
         
     }
 
