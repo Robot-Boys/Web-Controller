@@ -47,8 +47,8 @@ def test_joystick():
 @app.route("/pose/<a_pose>", methods=['PUT'])
 def pose(a_pose):
     move_object = {
-        action: 0,
-        motor: a_pose
+        'action': 0,
+        'motor': a_pose
     }
     string_pose = pickle.dumps(move_object)
     # byte_pose = string_pose.encode()
