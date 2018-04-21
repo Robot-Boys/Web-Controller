@@ -48,7 +48,7 @@ def test_joystick():
 def pose(a_pose):
     move_object = {
         'action': a_pose,
-        'motor': 'null'
+        'motor': 0
     }
     string_pose = pickle.dumps(move_object)
     # byte_pose = string_pose.encode()
